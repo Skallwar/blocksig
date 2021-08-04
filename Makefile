@@ -4,11 +4,11 @@ LD = lld
 CFLAGS += -D__TARGET_ARCH_x86 $$(pkg-config --cflags libbpf) -g -O2 -Wall -Wextra
 LDFLAGS += $$(pkg-config --libs libbpf) -fuse-ld=$(LD)
 
-OBJS = kprobe.o	\
+OBJS = bootstrap.o	\
       vec/vec.o
-OBJ_BPF = kprobe.bpf.o
+OBJ_BPF = bootstrap.bpf.o
 HEADERS_BPF := $(OBJ_BPF:.bpf.o=.skel.h)
-EXE = kprobe
+EXE = bootstrap
 
 .PHONY: all clean
 
