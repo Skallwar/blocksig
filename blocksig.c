@@ -17,7 +17,7 @@ int syscall__kill(struct pt_regs *ctx, int pid, int sig)
         return 0;
 
     if (needs_block(*protected_pid, *protected_sig)) {
-        bpf_trace_printk("Blockeg signal %d for %d\\n", sig, pid);
+        bpf_trace_printk("Blocked signal %d for %d\\n", sig, pid);
         bpf_override_return(ctx, 0);
     }
 
